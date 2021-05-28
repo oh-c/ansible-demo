@@ -1,0 +1,12 @@
+router bgp {{ bgp_as }}
+{% for peer in bgp['peers'] %}
+  {%- set loopback_ip = interfaces['Loopback0']['ip'] | ansible.netcommon.ipaddr('address') %}
+  {%- set vrf_id = vrfs[peer['vrf']]['id'] %}
+ vrf {{ peer['vrf'] }}
+  rd {{ loopback_ip }}:{{ vrf_id }}
+ !
+ neighbor {{ peer['neighbor'] }}
+  no shutdown
+ !
+{% endfor %}
+!

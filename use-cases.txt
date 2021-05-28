@@ -1,0 +1,13 @@
+
+Vlan configuration on switches
+
+Generate VRF configuration for multiple VRFs
+
+Generate BGP configuration
+
+Rollout "no ip redirects" on all SVI on Nexus
+
+Rollout new syslog server
+
+Remove old syslog server
+

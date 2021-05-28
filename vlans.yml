@@ -1,0 +1,16 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+
+  vars_files:
+    - vars/vlans.yml
+
+  tasks:
+
+    - name: Generate VLAN configuration
+      template:
+        src: vlans.j2
+        dest: "cfg/{{ inventory_hostname }}-vlans.cfg"
+        mode: 0640
+...

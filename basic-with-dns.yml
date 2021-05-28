@@ -1,0 +1,13 @@
+---
+- hosts: all
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+  - name: Generate basic configuration
+    template:
+      src: basic-with-dns.j2
+      dest: "cfg/{{ inventory_hostname }}.cfg"
+      mode: 0640
+...

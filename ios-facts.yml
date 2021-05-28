@@ -1,0 +1,21 @@
+---
+- name: Gather and print facts
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: Gather some facts
+      cisco.ios.ios_facts:
+        gather_subset: min
+        gather_network_resources:
+          - l2_interfaces
+          - l3_interfaces
+      when: ansible_network_os == 'ios'
+
+    - name: Print ansible_facts
+      debug:
+        var: ansible_facts
+      when: ansible_network_os == 'ios'
+...

@@ -1,0 +1,13 @@
+---
+- name: Save configuration on all NX-OS devices
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+
+  tasks:
+
+    - name: Save configuration
+      cisco.nxos.nxos_config:
+        save_when: always
+      when: ansible_network_os == 'nxos'
+...

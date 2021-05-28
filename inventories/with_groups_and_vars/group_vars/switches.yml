@@ -1,0 +1,6 @@
+---
+snmp_locations:
+vlans:
+  - vlan_id: 123
+    name: Foo
+...

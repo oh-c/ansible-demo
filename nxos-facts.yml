@@ -1,0 +1,24 @@
+---
+- name: Gather and print facts
+  hosts: all
+  gather_facts: false
+  connection: network_cli
+
+  collections:
+    - cisco.nxos
+  tasks:
+
+    - name: Gather some facts
+      nxos_facts:
+        gather_subset: min
+        gather_network_resources:
+          - vlans
+          - l2_interfaces
+          - l3_interfaces
+      when: ansible_network_os == 'nxos'
+
+    - name: Print ansible_facts
+      debug:
+        var: ansible_facts
+      when: ansible_network_os == 'nxos'
+...

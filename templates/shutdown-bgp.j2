@@ -1,0 +1,9 @@
+router bgp {{ bgp_as }}
+{% for peer in bgp['peers'] %}
+ vrf {{ peer['vrf'] }}
+ !
+ neighbor {{ peer['neighbor'] }}
+  shutdown
+ !
+{% endfor %}
+!

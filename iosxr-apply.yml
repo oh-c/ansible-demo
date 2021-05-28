@@ -1,0 +1,22 @@
+---
+- hosts: xr01
+  connection: network_cli
+  gather_facts: false
+
+  collections:
+    - cisco.iosxr
+
+  tasks:
+
+    - name: Shutdown BGP peers gracefully
+      cisco.iosxr.iosxr_config:
+        src: templates/shutdown-bgp.j2
+
+    - name: Remove VRF from bgp config
+      cisco.iosxr.iosxr_config:
+        src: templates/remove-vrf-from-bgp.j2
+
+    - name: Reapply BGP configuration
+      cisco.iosxr.iosxr_config:
+        src: templates/reapply-bgp.j2
+...

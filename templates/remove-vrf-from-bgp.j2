@@ -1,0 +1,6 @@
+router bgp {{ bgp_as }}
+{% for peer in bgp['peers'] %}
+ no vrf {{ peer['vrf'] }}
+ !
+{% endfor %}
+!

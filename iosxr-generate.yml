@@ -1,0 +1,25 @@
+---
+- hosts: xr01
+  connection: local
+  gather_facts: false
+
+  tasks:
+
+    - name: Shutdown BGP peers gracefully
+      template:
+        src: templates/shutdown-bgp.j2
+        dest: "cfg/{{ inventory_hostname }}-shutdown-bgp.txt"
+        mode: 0640
+
+    - name: Remove VRF from bgp config
+      template:
+        src: templates/remove-vrf-from-bgp.j2
+        dest: "cfg/{{ inventory_hostname }}-remove-vrf-from.bgp.txt"
+        mode: 0640
+
+    - name: Reapply BGP configuration
+      template:
+        src: templates/reapply-bgp.j2
+        dest: "cfg/{{ inventory_hostname }}-reapply-bgp.txt"
+        mode: 0640
+...

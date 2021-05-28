@@ -1,0 +1,12 @@
+---
+ansible_user: admin
+ansible_password: demo
+bgp_as: 64512
+vrfs:
+  horse:
+    description: Horses are fast
+    id: 1234
+  rabbit:
+    description: Meh
+    id: 4333
+...

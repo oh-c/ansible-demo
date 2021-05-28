@@ -1,0 +1,20 @@
+---
+- name: Ensure that each SVI has no ip redirects
+  hosts: nx01
+  connection: network_cli
+  gather_facts: false
+
+  collections:
+    - cisco.nxos
+
+  tasks:
+
+    - name: Gather network resources for device
+      cisco.nxos.nxos_facts:
+        gather_subset: min
+        gather_network_resources: l3_interfaces
+
+    - name: Ensure that all Vlan interfaces has no ip redirects set
+      cisco.nxos.nxos_config:
+        src: templates/no-ip-redirects.j2
+...

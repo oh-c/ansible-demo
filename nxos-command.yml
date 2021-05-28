@@ -1,0 +1,15 @@
+- name: Set output filename
+  set_fact:
+    filename: "{{ output_dir }}/{{ inventory_hostname }}-{{ item | regex_replace(' ', '_') }}.txt"
+
+- name: "Run {{ item }}"
+  cisco.nxos.nxos_command:
+    commands:
+      - "{{ item }}"
+  register: result
+
+- name: "Write result to {{ filename }}"
+  copy:
+    content: "{{ result['stdout'][0] }}"
+    dest: "{{ filename }}"
+

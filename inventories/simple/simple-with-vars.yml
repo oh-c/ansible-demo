@@ -1,0 +1,19 @@
+---
+all:
+  vars:
+    ansible_user: admin
+    ansible_password: demo
+    snmp_location: Nej
+    dns_servers:
+      - 1.1.1.1
+      - 8.8.8.8
+  hosts:
+    nx01:
+      ansible_network_os: nxos
+      snmp_location: London
+    rt01:
+      ansible_network_os: ios
+      snmp_location: Bruxelle
+    xr01:
+      ansible_network_os: iosxr
+...

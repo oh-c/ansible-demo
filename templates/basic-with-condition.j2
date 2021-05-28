@@ -1,0 +1,9 @@
+!
+! basic configuration for {{ inventory_hostname }}
+!
+hostname {{ inventory_hostname }}
+{% if snmp_location is defined -%}
+snmp-server location {{ snmp_location }}
+{% else -%}
+snmp-server location sorry
+{% endif %}

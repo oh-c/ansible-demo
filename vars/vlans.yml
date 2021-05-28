@@ -1,0 +1,9 @@
+---
+vlans:
+  - vlan_id: 100
+    name: "vlan100"
+  - vlan_id: 200
+    name: Brian
+  - vlan_id: 40
+    name: Brazil
+...

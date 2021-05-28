@@ -1,0 +1,9 @@
+---
+all:
+  hosts:
+    demo:
+      ansible_host: 10.20.30.40
+    nx01.demo.local:
+    rt01.demo.local:
+    xr01.demo.local:
+...

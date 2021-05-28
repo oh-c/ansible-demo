@@ -1,0 +1,7 @@
+{% for interface in ansible_facts['network_resources']['l3_interfaces'] %}
+{% if 'Vlan' in interface['name'] %}
+interface {{ interface['name'] }}
+  no ip redirects
+!
+{% endif %}
+{% endfor %}

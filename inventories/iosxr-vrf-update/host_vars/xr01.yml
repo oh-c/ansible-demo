@@ -1,0 +1,13 @@
+---
+interfaces:
+  Loopback0:
+    ip: 192.168.255.1/32
+bgp:
+  peers:
+    - neighbor: 10.20.30.40
+      peer_as: 64513
+      vrf: horse
+    - neighbor: 10.10.10.10
+      peer_as: 64514
+      vrf: rabbit
+...
